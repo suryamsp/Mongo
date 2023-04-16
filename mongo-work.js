@@ -1,9 +1,9 @@
-mongosh
-show dbs 
-use local // create dataabase
-db // perticular dataabase
-show collections
-db.movie.inserMany(data)
+// mongosh
+// show dbs 
+// use local // create dataabase
+// db // perticular dataabase
+// show collections
+// db.movie.inserMany(data)
 
 // create many object
 db.movie.insertMany([
