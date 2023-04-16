@@ -9,7 +9,7 @@ const app = express();
 // globaly declaration 
 app.use(express.json());
 
-const PORT = 2604;
+const PORT = process.env.PORT; // process.env.PORT
 // const mongo_url = "mongodb://127.0.0.1";
 const mongo_url = process.env.mongo_url;
 
