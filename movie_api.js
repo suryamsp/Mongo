@@ -27,7 +27,7 @@ router.get("/:id", async function (request, response) {
 router.put("/:id", async function (request, response) {
   const { id } = request.params;
   const data = request.body;
-  console.log(data);
+  // console.log(data);
   // const onemovie =movies.filter((mv) => mv.id == id)
   // const onemovie =movies.find((mv) => mv.id == id);
   const updatemovie = await updateMovie(id, data);

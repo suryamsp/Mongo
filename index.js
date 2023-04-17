@@ -5,11 +5,13 @@ dotenv.config()
 import express from "express"; // only type "module"
 import { MongoClient } from "mongodb";
 import moviesRouter from "./movie_api.js";
+import cors from "cors";
 
 export const app = express();
 
 // globaly declaration 
 app.use(express.json());
+app.use(cors());
 
 const PORT = process.env.PORT; // process.env.PORT
 // const mongo_url = "mongodb://127.0.0.1";
