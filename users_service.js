@@ -6,3 +6,10 @@ export async function createUsers(data) {
     .collection("users")
     .insertOne(data);
 }
+
+export async function getUsername(username) {
+  return await client
+    .db("movie")
+    .collection("users")
+    .findOne({ username: username });
+}

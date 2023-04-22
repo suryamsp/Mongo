@@ -1,24 +1,31 @@
 import { getMovies, getMovieid, updateMovie, deleteMovie, postMovie } from './movies_service.js';
-import express from "express"; // only type "module"
+import express, { query } from "express"; // only type "module"
+import {auth} from "./middleware/auth.js";
 
 
 
 const router=express.Router()
 
 // Get all movie
-router.get("/", async function (request, response) {
-
-  const movie = await getMovies();
+router.get("/", auth,  async function (request, response) {
+//  console.log(request.query);
+ 
+ if(request.query.rating){
+  request.query.rating = +request.query.rating;
+ }
+//  console.log(request.query);
+ 
+  const movie = await getMovies(request.query);
   response.send(movie);
 });
 // get movie by iid one movie
-router.get("/:id", async function (request, response) {
+router.get("/:id",auth ,async function (request, response) {
   const { id } = request.params;
   console.log(id);
   // const onemovie =movies.filter((mv) => mv.id == id)
   // const onemovie =movies.find((mv) => mv.id == id);
   const onemovie = await getMovieid(id);
-  console.log(onemovie);
+  // console.log(onemovie);
   onemovie
     ? response.send(onemovie)
     : response.status(404).send(`movie not found`);
